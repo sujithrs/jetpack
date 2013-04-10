@@ -66,7 +66,11 @@ def jruby!(cmd)
 end
 
 def download(url, local_file)
-  x! "curl --silent --show-error -o #{local_file} #{url}"
+  if url['http://'] or url['https://']
+    x! "curl --silent --show-error -o #{local_file} #{url}"
+  else
+    FileUtils.cp(url, local_file)
+  end
 end
 
 def unzip(file, directory, pattern="")
