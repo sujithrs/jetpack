@@ -544,6 +544,7 @@ case "$ACTION" in
 	if [ "$START_STOP_DAEMON" = "1" ] && type start-stop-daemon > /dev/null 2>&1
 	then
           [ x$JETTY_USER = x ] && JETTY_USER=$(whoami)
+          [ x$UID = x ] && UID=$(id -u)
 	  [ $UID = 0 ] && CH_USER="-c $JETTY_USER"
 	  if start-stop-daemon -S -p$JETTY_PID $CH_USER -d $JETTY_HOME -b -m -a $JAVA -- $RUN_ARGS
 	  then
