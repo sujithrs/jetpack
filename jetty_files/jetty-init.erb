@@ -15,7 +15,7 @@ JETTY_LOGS=$WEB_ROOT/log
 test `whoami` != <%=@settings.app_user%> && JETTY_USER=<%=@settings.app_user%>
 
 <% if @settings.environment %>
-source <%=@settings.environment%>
+. <%=@settings.environment%>
 <% end %>
 
 # Startup script for jetty under *nix systems (it works under NT/cygwin too).
