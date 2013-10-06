@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+
+  <Call class="java.lang.System" name="setProperty">
+    <Arg>jdbc.db</Arg>
+    <Arg>
+      <Call class="java.lang.System" name="getenv">
+        <Arg>JDBC_DB</Arg>
+      </Call>
+    </Arg>
+  </Call>
+
+  <Call class="java.lang.System" name="setProperty">
+    <Arg>jdbc.server</Arg>
+    <Arg>
+      <Call class="java.lang.System" name="getenv">
+        <Arg>JDBC_SERVER</Arg>
+      </Call>
+    </Arg>
+  </Call>
+
+  <Call class="java.lang.System" name="setProperty">
+    <Arg>jdbc.port</Arg>
+    <Arg>
+      <Call class="java.lang.System" name="getenv">
+        <Arg>JDBC_PORT</Arg>
+      </Call>
+    </Arg>
+  </Call>
+
+  <Call class="java.lang.System" name="setProperty">
+    <Arg>jdbc.user</Arg>
+    <Arg>
+      <Call class="java.lang.System" name="getenv">
+        <Arg>JDBC_USER</Arg>
+      </Call>
+    </Arg>
+  </Call>
+
+  <Call class="java.lang.System" name="setProperty">
+    <Arg>jdbc.password</Arg>
+    <Arg>
+      <Call class="java.lang.System" name="getenv">
+        <Arg>JDBC_PASSWORD</Arg>
+      </Call>
+    </Arg>
+  </Call>
+
+  <New id="cead" class="org.eclipse.jetty.plus.jndi.Resource">
+     <Arg></Arg>
+     <Arg>jdbc/cead</Arg>
+     <Arg>
+        <New class="org.postgresql.ds.PGConnectionPoolDataSource">
+           <Set name="User"><SystemProperty name="jdbc.user"/></Set>
+           <Set name="Password"><SystemProperty name="jdbc.password"/></Set>
+           <Set name="DatabaseName"><SystemProperty name="jdbc.db"/></Set>
+           <Set name="ServerName"><SystemProperty name="jdbc.server"/></Set>
+           <Set name="PortNumber"><SystemProperty name="jdbc.port" default="5432"/></Set>
+        </New>
+     </Arg>
+    </New>
+</Configure>
