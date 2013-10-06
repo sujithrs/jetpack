@@ -1,6 +1,8 @@
 spec/local_mirror
 pkg
 .rvmrc
-.idea/*
+.idea/
 .DS_STORE
 .swp
+target/
+*.iml
