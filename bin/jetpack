@@ -180,8 +180,8 @@ if @settings.jetty?
   end
   overlay_files File.join(@jetpack_dir, "web_inf_files"), web_inf_dir
 
-  shaded_jar = build_java_sources()
-  FileUtils.copy(shaded_jar, File.join(jetty_dir, "lib/ext/jetpack.jar"))
+  #shaded_jar = build_java_sources()
+  #FileUtils.copy(shaded_jar, File.join(jetty_dir, "lib/ext/jetpack.jar"))
 end
 
 config_jetpack_dir_in_project = File.join(@path_to_project, "config/jetpack_files")
