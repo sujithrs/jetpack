@@ -25,6 +25,7 @@ module Jetpack
         'keystore_password'          => nil,
         'truststore'                 => nil,
         'truststore_password'        => nil,
+        'sidekiq'                    => true,
         'reload_keystore'            => false,
       }
 

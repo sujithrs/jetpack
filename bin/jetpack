@@ -98,7 +98,7 @@ def bundle_install
   regenerate_gemfile_lock_if_platform_java_is_not_found
   jruby! "#{@gem_home}/bin/bundle --deployment --without test development"
   jruby! "#{@gem_home}/bin/bundle binstubs rake"
-  jruby! "#{@gem_home}/bin/bundle binstubs sidekiq"
+  jruby! "#{@gem_home}/bin/bundle binstubs sidekiq" if @settings.sidekiq
 end
 
 def build_java_sources
